@@ -1,18 +1,18 @@
 #include "Enemy.h"
 
-Enemy::Enemy()
-{
+Enemy::Enemy(int hp, int arm, int pwr, int rate, int sightDistance, char character, int x, int y) : 
+	Actor(hp, arm, pwr, rate, character, x, y) {
+
+	m_sightDistance = sightDistance;
 }
 
 Enemy::~Enemy()
 {
+	// destructor here
 }
 
-int Enemy::getSightDistance()
-{
-	return 0;
-}
+// Getters
+int Enemy::getSightDistance() {	return m_sightDistance; }
 
-void Enemy::setSightDistance(int)
-{
-}
+// Setters
+void Enemy::setSightDistance(int sightDistance) { m_sightDistance = sightDistance; }

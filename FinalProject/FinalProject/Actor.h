@@ -11,8 +11,8 @@ class Actor : public GameObject{
 public:
 	Actor(int hp=1, int arm=0, int pwr=0, int rate=0, char character=' ', int x=0, int y=0);
 	virtual ~Actor();
-	virtual void attack(Actor *);
-	virtual Position* move();
+	virtual void attack(Actor *) = 0;
+	virtual void move() = 0;
 	int getArmor();
 	int getHealth();
 	int getPower();
