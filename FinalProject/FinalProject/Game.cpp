@@ -49,7 +49,7 @@ void Game::play()
     }
     //displayPrompt("Game Over!  Press the Enter key to exit!");
 	//std::cout << "heckin " << std::endl;
-	map.draw();
+	map.draw(nullptr);
 	waitForEnter();
 	while (!0) 
 	{
@@ -60,7 +60,7 @@ void Game::play()
 			//m_screen.clear();
 			system("CLS");
 			map.scroll();
-			map.draw();
+			map.draw(nullptr);
 			start = clock();
 			
 			char input;

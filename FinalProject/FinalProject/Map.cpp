@@ -1,4 +1,6 @@
 #include "Map.h"
+#include "GameObject.h"
+#include "Position.h"
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
@@ -57,10 +59,24 @@ void Map::scroll() {
 	++scrollIndex;
 }
 
-void Map::draw() {
+void Map::draw(std::vector<GameObject *> *objects) {
 	//copy to screen buffer 
 	memcpy(m_mapBuffer, m_map, (n_columns + 1) * n_rows);
-	for (int i = 0; i < n_rows; i++) {
+
+	if (objects != nullptr)
+	{
+		Position* objPos;
+
+		for (GameObject* obj : *(objects))
+		{
+			objPos = obj->getPosition();
+
+			m_mapBuffer[objPos->getY()][objPos->getX()] = obj->getDisplayChar();
+		}
+	}
+
+	for (int i = 0; i < n_rows; i++) 
+	{
 		cout << m_mapBuffer[i] << endl; 
 	}
 }

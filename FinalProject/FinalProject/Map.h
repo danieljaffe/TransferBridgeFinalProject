@@ -1,10 +1,16 @@
-#ifndef MAP
+#ifndef MAP_H
+#define MAP_H
+
+#include <vector>
+
+class GameObject;
+
 class Map
 {
 public:
 	Map();
 	~Map()=default;
-	void draw();
+	void draw(std::vector<GameObject *> *objects);
 	void scroll();
 	static const int n_rows = 28;
 	static const int n_columns = 100;
@@ -24,4 +30,5 @@ private:
 	char m_map[n_rows][n_columns + 1] = {0};
 	char m_mapBuffer[n_rows][n_columns + 1] = {0};
 };
+
 #endif 
