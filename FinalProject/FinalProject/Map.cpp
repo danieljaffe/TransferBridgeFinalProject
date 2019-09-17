@@ -11,6 +11,14 @@ Map::Map(){
 	}
 }
 
+Map::~Map() {
+
+}
+
+void Map::scroll() {
+
+}
+
 void Map::draw() {
 	for (int i = 0; i < n_rows; i++) {
 		cout << m_map[i] << endl; 
