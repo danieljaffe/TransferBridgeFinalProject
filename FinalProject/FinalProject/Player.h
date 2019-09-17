@@ -11,7 +11,7 @@ public:
 
 	// Member functions
 	virtual void attack(Actor*);
-	virtual void move(char input);
+	virtual void move() = 0;
 	void applyEffects();
 private:
 	// private vars here
