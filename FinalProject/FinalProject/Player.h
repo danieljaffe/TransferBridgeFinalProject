@@ -8,7 +8,7 @@ public:
 	Player();
 	virtual ~Player();
 	virtual void attack(Actor*);
-	virtual Position* move();
+	virtual void move();
 	void applyEffects();
 private:
 	// private vars here
