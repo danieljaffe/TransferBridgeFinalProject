@@ -8,7 +8,7 @@ public:
 	Bullet();
 	virtual ~Bullet();
 	virtual void attack(Actor*);
-	virtual Position* move();
+	virtual void move();
 private:
 	// private vars here
 };
