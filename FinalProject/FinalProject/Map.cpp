@@ -58,8 +58,9 @@ void Map::scroll() {
 }
 
 void Map::draw() {
+	//copy to screen buffer 
+	memcpy(m_mapBuffer, m_map, (n_columns + 1) * n_rows);
 	for (int i = 0; i < n_rows; i++) {
-		cout << m_map[i] << endl; 
+		cout << m_mapBuffer[i] << endl; 
 	}
-	
 }

@@ -14,14 +14,14 @@ private:
 
 	static const char WALL = '#';
 	static const char SPACE = ' ';
-
 	unsigned int scrollIndex = 0;
-
 	static const unsigned int NUM_FREQS{ 3 };
+
 
 	double tunnelFreqs[NUM_FREQS] = {0.025, 0.05, 0.10 };
 	double tunnelAmps[NUM_FREQS] = {5.0, 2.0, 2.0 };
 	
 	char m_map[n_rows][n_columns + 1] = {0};
+	char m_mapBuffer[n_rows][n_columns + 1] = {0};
 };
 #endif 
