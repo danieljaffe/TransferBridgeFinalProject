@@ -5,16 +5,23 @@ class Position;
 
 class GameObject {
 public:
-	GameObject();
+	// Constructors and Destructors
+	GameObject(char character = ' ', int x=0, int y=0);
 	virtual ~GameObject();
-	Position* getPosition();
-	void setPosition(Position*);
+	
+	// Getters
 	char getDisplayChar();
+	Position* getPosition();
+	
+	// Setters
+	void setPosition(Position*);
+	void setPosition(int x, int y);
 	void setDisplayChar(char);
 
 private:
-	char displayChar;
-	Position* pos;
+	// Member variables
+	char m_displayChar;
+	Position* m_pos;
 };
 
 #endif

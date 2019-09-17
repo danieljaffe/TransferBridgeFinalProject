@@ -5,12 +5,18 @@
 
 class Enemy : public Actor {
 public:
+	// Constructors and Destructors
 	Enemy();
 	virtual ~Enemy();
+
+	// Getters
 	int getSightDistance();
+	
+	// Setters
 	void setSightDistance(int);
 private:
-	int sightDistance;
+	// Member variables
+	int m_sightDistance;
 };
 
 
