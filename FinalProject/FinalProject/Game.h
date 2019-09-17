@@ -3,8 +3,11 @@
 
 #include "Gameboard.h"
 #include "UserInterface.h"
+#include "Map.h" 
 #include <string>
 // [Add other #include directives as necessary.]
+
+class Map;
 
 class Game
 {
@@ -26,7 +29,8 @@ private:
     Gameboard    m_board;
     Screen  m_screen;
     int     m_level;
-    
+	static const int TARGET_FPS = 30; 
+	Map map; 
     // [Add other members as necessary.]
 };
 

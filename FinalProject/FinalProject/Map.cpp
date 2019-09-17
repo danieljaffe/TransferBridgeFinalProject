@@ -33,7 +33,7 @@ void Map::scroll() {
 	int max = n_rows - 2 - Map::MIN_WALL_DIST / 2;
 	int offset = min + (rand() % (max - min));
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < NUM_FREQS; i++)
 	{
 		offset += tunnelAmps[i] * sin(tunnelFreqs[i] * scrollIndex);
 	}

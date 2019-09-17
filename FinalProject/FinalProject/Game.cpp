@@ -4,6 +4,7 @@
 #include "UserInterface.h"
 #include <iostream>
 #include <string>
+#include <ctime>
 
 using namespace std;
 const int SCREEN_WIDTH = 80;
@@ -27,20 +28,50 @@ Game::Game(int width, int height)
 
 void Game::play()
 {
-    m_board.display(m_screen, BOARD_X, BOARD_Y);
-    displayStatus();
-    displayPrompt("Press the Enter key to begin ENTER GAME NAME ");
-    waitForEnter();  // [in UserInterface.h]
+	clock_t start; // init clock 
+	double duration; 
+	start = std::clock();
+    //m_board.display(m_screen, BOARD_X, BOARD_Y);
+    //displayStatus();
+    //displayPrompt("Press the Enter key to begin ENTER GAME NAME ");
+	//displayPrompt("P");
+    //waitForEnter();  // [in UserInterface.h] 
+
+
 
     for(;;)
     {
         if ( ! playOneLevel())
             break;
-        displayPrompt("Good job!  Press the Enter key to start next level!");
-        waitForEnter();
+        //displayPrompt("Good job!  Press the Enter key to start next level!");
         m_level++;
+		
     }
-    displayPrompt("Game Over!  Press the Enter key to exit!");
+    //displayPrompt("Game Over!  Press the Enter key to exit!");
+	//std::cout << "heckin " << std::endl;
+	map.draw();
+	waitForEnter();
+	while (!0) 
+	{
+		duration = (clock() - start) / (double)CLOCKS_PER_SEC;
+		
+		if (duration >= 1.0 / TARGET_FPS) 
+		{
+			//m_screen.clear();
+			system("CLS");
+			map.scroll();
+			map.draw();
+			start = clock();
+			
+			char input;
+
+			getCharIfAny(input);
+
+			if (input == 13) return;
+		}
+			
+	}
+	
     waitForEnter();
 }
 
