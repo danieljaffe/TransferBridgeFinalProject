@@ -5,7 +5,7 @@
 
 class Bullet : public Actor {
 public:
-	Bullet();
+	Bullet(Game*, int hp = 1, int arm = 0, int pwr = 0, int rate = 0, char character = '-', int x = 0, int y = 0);
 	virtual ~Bullet();
 	virtual void attack(Actor*);
 	virtual void move();
