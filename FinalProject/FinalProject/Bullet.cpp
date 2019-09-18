@@ -38,6 +38,9 @@ void Bullet::move()
 	getPosition()->setX(bulletX);
 }
 
+
+
+// This function could use clean up post mortum  :P 
 void Bullet::update() {
 
 	move();
@@ -49,11 +52,21 @@ void Bullet::update() {
 		if (getGame()->getMap()->isWall(bulletX + 1, bulletY)) {
 			this->~Bullet();
 		}
-	
-		GameObject* npc = this->getGame()->getMap();
 
-
-		//	m_gameObjects  iterate through this to look for objects and call getCharacter()
+		// This is ugly and slow but forced due to the way the map ended up being implemented
+		// Iterates through all in play game object and checks if their position is one ahead of
+		// the buller and if it is of an enemy type. Attacks if this is true.
+		std::vector<GameObject*> gameObjects = getGame()->getGameObjects();
+		for (int i = 0; i < gameObjects.size(); i++) {
+			GameObject* checkObject = gameObjects.at(i);
+			char type = checkObject->getDisplayChar();
+			if ((bulletX + 1 == checkObject->getPosition()->getX()) && (type == '{' || type == '<')) {
+				// This is bad practice but again, forced due to the setup of the project
+				// Be sure to check for the correct character types or this will blow up!  :)
+				Actor* enemy = (Actor*)checkObject;
+				attack(enemy);	
+			}
+		}
 	}
 	else {
 		if (getGame()->getMap()->isWall(bulletX - 1, bulletY)) {
