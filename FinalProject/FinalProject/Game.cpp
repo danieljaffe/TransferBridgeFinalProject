@@ -60,6 +60,7 @@ void Game::play()
     //displayPrompt("Game Over!  Press the Enter key to exit!");
 	//std::cout << "heckin " << std::endl;
 	map.draw(m_gameObjects);
+	cout << "Health: " << getPlayer()->getHealth() << "    Shields: " << getPlayer()->getArmor() << endl;
 	cout << "Score: " << m_score;
 	waitForEnter();
 	while (!isGameOver()) 
@@ -92,6 +93,7 @@ void Game::play()
 			system("CLS");
 			map.scroll();
 			map.draw(m_gameObjects);
+			cout << "Health: " << getPlayer()->getHealth() << "    Shields: " << getPlayer()->getArmor() << endl;
 			cout << "Score: " << m_score;
 			start = clock();
 
