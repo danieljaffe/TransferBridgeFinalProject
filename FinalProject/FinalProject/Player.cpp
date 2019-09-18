@@ -81,6 +81,8 @@ void Player::move()
 
 void Player::update()
 {
+	Actor::update();
+
 	if (getHealth() <= 0) {
 		this->getGame()->remove(this);
 		return;

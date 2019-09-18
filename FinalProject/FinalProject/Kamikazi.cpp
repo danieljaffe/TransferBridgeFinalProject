@@ -38,6 +38,7 @@ void Kamikazi::attack(Actor* actor)
 }
 
 void Kamikazi::update() {
+	Actor::update();
 	// Check for wall collisions
 	int x = getPosition()->getX();
 	int y = getPosition()->getY();
