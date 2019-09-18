@@ -1,13 +1,15 @@
 #include "Kamikazi.h"
 #include "Position.h"
 #include "Actor.h"
+#include "Enemy.h"
 #include "Map.h"
 #include <cmath>
 
 Kamikazi::Kamikazi(Game* game, int hp, int arm, int pwr, int rate, int sightDistance, char character, int x, int y) :
 	Enemy(game, hp, arm, pwr, rate, sightDistance, character, x, y) {
 	
-	m_startingMoves = Map::n_columns / 8;
+	setStartingMoves(Map::n_columns / 8);
+	
 
 	// constructor here
 }
@@ -43,7 +45,7 @@ void Kamikazi::update() {
 	int enemyY = getPosition()->getY();
 	
 	
-	if (m_startingMoves >= 0) {
+	if (getStartingMoves() >= 0) {
 		setPosition(enemyX - 1, enemyY);
 	}
 	else {
@@ -56,7 +58,7 @@ void Kamikazi::update() {
 		attack(player);
 	}	
 
-	m_startingMoves--;
+	setStartingMoves(getSightDistance() - 1);
 }
 
 void Kamikazi::move()

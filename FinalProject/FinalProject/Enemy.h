@@ -14,11 +14,14 @@ public:
 
 	// Getters
 	int getSightDistance();
+	int getStartingMoves();
 	
 	// Setters
 	void setSightDistance(int);
+	void setStartingMoves(int);
 private:
 	// Member variables
+	int m_startingMoves; // movement state
 	int m_sightDistance;
 };
 

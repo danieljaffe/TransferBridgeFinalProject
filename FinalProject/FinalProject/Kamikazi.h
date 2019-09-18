@@ -15,7 +15,7 @@ public:
 	virtual void move();
 	virtual void update();
 private:
-	int m_startingMoves; // movement state
+	
 	// private vars here
 };
 
