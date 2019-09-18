@@ -3,7 +3,10 @@
 
 // Constructors and Destructors
 Player::Player(Game* game, int hp, int arm, int pwr, int rate, char character, int x, int y) : 
-	Actor(game, hp, arm, pwr, rate, character, x, y) {}
+	Actor(game, hp, arm, pwr, rate, character, x, y) {
+
+	setNumBullets(1);
+}
 Player::~Player() {}
 
 void Player::attack(Actor*)
@@ -43,3 +46,4 @@ void Player::update()
 void Player::applyEffects()
 {
 }
+

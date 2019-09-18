@@ -18,6 +18,8 @@ public:
 	int getHealth();
 	int getPower();
 	int getFireRate();
+	int getNumBullets();
+	void setNumBullets(int);
 	void setArmor(int);
 	void setHealth(int);
 	void setPower(int);
@@ -30,6 +32,7 @@ private:
 	int m_armor;
 	int m_power;
 	int m_fireRate;
+	int m_numBullets;
 	std::vector<Effect*>* m_effects;
 };
 

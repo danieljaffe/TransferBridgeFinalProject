@@ -4,7 +4,7 @@
 #include "Effect.h"
 class TrippleShotPowerUp : public Effect {
 public:
-
+	virtual void applyEffect(Actor*);
 private:
 
 };

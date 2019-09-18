@@ -9,6 +9,7 @@ Actor::Actor(Game* game, int hp, int arm, int pwr, int rate, char character, int
 	m_armor = arm;
 	m_power = pwr;
 	m_fireRate = rate;
+	m_numBullets = 0;
 }
 
 Actor::~Actor() {
@@ -44,4 +45,14 @@ bool Actor::removeEffect(Effect* effect)
 void Actor::addEffect(Effect* effect)
 {
 	m_effects->push_back(effect);
+}
+
+int Actor::getNumBullets()
+{
+	return m_numBullets;
+}
+
+void Actor::setNumBullets(int number)
+{
+	m_numBullets = number;
 }
