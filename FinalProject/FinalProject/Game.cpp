@@ -23,6 +23,7 @@ const int PROMPT_X = 0;
 Game::Game(int width, int height)
 : m_screen(SCREEN_WIDTH, SCREEN_HEIGHT), m_level(1)
 {
+	map.setGame(this); 
 	m_gameObjects = new std::vector<GameObject*>();
 }
 
@@ -43,7 +44,8 @@ void Game::play()
 	//displayPrompt("P");
     //waitForEnter();  // [in UserInterface.h] 
 
-	add(new Player(this));
+	m_player = new Player(this);
+	add(m_player); 
 
 
     for(;;)
@@ -135,7 +137,7 @@ int Game::randInt(int min, int max) {
 	return min + std::rand() % (max - min);
 }
 
-bool Game::trueWithProbabitiliy(double p)
+bool Game::trueWithProbability(double p)
 {
 	return std::rand() < p * RAND_MAX + p;
 }
