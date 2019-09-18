@@ -38,11 +38,11 @@ void GameObject::update()
 	int x = getPosition()->getX();
 	int y = getPosition()->getY();
 
-	if ((x < 0) || (y < 0))
+	if ((x <= 1) || (y <= 0))
 	{
 		setDestroyFlag(true);
 	}
-	if ((x > Map::n_columns) || (y > Map::n_rows - 1))
+	if ((x >= Map::n_columns) || (y >= Map::n_rows - 1))
 	{
 		setDestroyFlag(true);
 	}
