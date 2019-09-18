@@ -2,8 +2,8 @@
 #include "Position.h"
 
 // Constructors and Destructors
-Player::Player(int hp, int arm, int pwr, int rate, char character, int x, int y) : 
-	Actor(hp, arm, pwr, rate, character, x, y) {}
+Player::Player(Game* game, int hp, int arm, int pwr, int rate, char character, int x, int y) : 
+	Actor(game, hp, arm, pwr, rate, character, x, y) {}
 Player::~Player() {}
 
 void Player::attack(Actor*)
@@ -34,6 +34,10 @@ void Player::move(char input)
 	}
 	getPosition()->setX(x);
 	getPosition()->setY(y);
+}
+
+void Player::update()
+{
 }
 
 void Player::applyEffects()

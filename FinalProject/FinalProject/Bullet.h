@@ -9,6 +9,7 @@ public:
 	virtual ~Bullet();
 	virtual void attack(Actor*);
 	virtual void move();
+	virtual void update();
 private:
 	// private vars here
 };
