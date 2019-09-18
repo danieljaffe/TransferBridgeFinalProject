@@ -14,5 +14,15 @@ Enemy::~Enemy()
 // Getters
 int Enemy::getSightDistance() {	return m_sightDistance; }
 
+int Enemy::getStartingMoves()
+{
+	return m_startingMoves;
+}
+
 // Setters
 void Enemy::setSightDistance(int sightDistance) { m_sightDistance = sightDistance; }
+
+void Enemy::setStartingMoves(int startMoves)
+{
+	m_startingMoves = startMoves;
+}

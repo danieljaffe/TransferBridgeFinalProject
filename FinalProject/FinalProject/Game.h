@@ -4,6 +4,7 @@
 #include "Gameboard.h"
 #include "GameObject.h"
 #include "UserInterface.h"
+//#include <random>
 #include "Map.h" 
 #include <string>
 #include <vector>
@@ -22,7 +23,8 @@ public:
     void displayStatus();
 	Actor* getPlayer();
 	void setPlayer(Actor*);
-
+	int randInt(int min, int max);
+	bool trueWithProbabitiliy(double p);
 	void add(GameObject* obj);
 
 	std::vector<GameObject*> getGameObjects();

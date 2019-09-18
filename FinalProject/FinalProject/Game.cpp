@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <cstdlib>
 
 using namespace std;
 const int SCREEN_WIDTH = 80;
@@ -33,6 +34,7 @@ void Game::play()
 {
 	clock_t start; // init clock 
 	double duration; 
+	std::srand(std::time(0));
 	start = std::clock();
     //m_board.display(m_screen, BOARD_X, BOARD_Y);
     //displayStatus();
@@ -122,6 +124,14 @@ Map* Game::getMap()
 	return &map;
 }
 
+int Game::randInt(int min, int max) {
+	return min + std::rand() % (max - min);
+}
+
+bool Game::trueWithProbabitiliy(double p)
+{
+	return std::rand() < p * RAND_MAX + p;
+}
 
 
 bool Game::playOneLevel()

@@ -37,10 +37,6 @@ void Gunner::attack(Actor* player)
 		int enemyX = getPosition()->getX();
 		int enemyY = getPosition()->getY();
 
-		if (enemyY != playerY) { // Only start shooting if the player is on our Y-value.
-			return;
-		}
-
 		Bullet* temp1 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() + 1, getPosition()->getY(), true);
 		getGame()->add(temp1);
 
@@ -60,10 +56,36 @@ void Gunner::attack(Actor* player)
 
 void Gunner::move()
 {
-
-
+	int movementOffset;
+	
+	if (getGame()->trueWithProbabitiliy(.5)) {
+		movementOffset = getGame()->randInt(-1, 1);
+	}
+	
+	setPosition(getPosition()->getX(), getPosition()->getY() + movementOffset);
 }
 
 void Gunner::update() {
+	Actor* player = this->getGame()->getPlayer();
 
+	int playerX = player->getPosition()->getX();
+	int playerY = player->getPosition()->getY();
+
+	int enemyX = getPosition()->getX();
+	int enemyY = getPosition()->getY();
+
+
+	if (getStartingMoves() >= 0) {
+		setPosition(enemyX - 1, enemyY);
+	}
+	else {
+		move();
+	}
+
+
+	if (playerY == enemyY) {
+		attack(player);
+	}
+
+	setStartingMoves(getSightDistance() - 1);
 }
