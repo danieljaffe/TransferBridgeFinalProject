@@ -24,7 +24,7 @@ public:
 	void setDestroyFlag(bool destroy);
 	bool getDestroyFlag();
 
-	virtual void update() = 0;
+	virtual void update();
 private:
 	// Member variables
 	char m_displayChar;

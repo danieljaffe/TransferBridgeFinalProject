@@ -43,6 +43,7 @@ void Bullet::move()
 
 // This function could use clean up post mortum  :P 
 void Bullet::update() {
+	Actor::update();
 
 	move();
 
