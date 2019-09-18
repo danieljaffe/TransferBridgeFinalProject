@@ -27,7 +27,8 @@ void Bullet::attack(Actor* actor)
 		actor->setArmor(enemyArmor - getPower());
 	}
 
-	this->getGame()->remove(this);
+	this->setDestroyFlag(true);
+	//this->getGame()->remove(this);
 }
 
 void Bullet::move()
@@ -50,7 +51,8 @@ void Bullet::update() {
 
 	if (m_playerFire) {
 		if (getGame()->getMap()->isWall(bulletX + 1, bulletY)) {
-			this->getGame()->remove(this);
+			this->setDestroyFlag(true);
+			//this->getGame()->remove(this);
 			return;
 		}
 
@@ -73,7 +75,8 @@ void Bullet::update() {
 	}
 	else {
 		if (getGame()->getMap()->isWall(bulletX - 1, bulletY)) {
-			this->getGame()->remove(this);
+			this->setDestroyFlag(true);
+			//this->getGame()->remove(this);
 		}
 
 		Actor* player = this->getGame()->getPlayer();
