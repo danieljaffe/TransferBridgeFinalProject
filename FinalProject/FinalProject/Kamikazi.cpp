@@ -42,6 +42,7 @@ void Kamikazi::update() {
 	int y = getPosition()->getY();
 	if (getGame()->getMap()->isWall(x, y)) {
 		this->getGame()->remove(this);
+		return;
 	}
 	// end Check
 	
