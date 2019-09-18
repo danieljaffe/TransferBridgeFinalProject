@@ -1,5 +1,6 @@
 #include "Kamikazi.h"
 #include "Position.h"
+#include "Game.h"
 #include "Actor.h"
 #include "Enemy.h"
 #include "Map.h"
@@ -36,17 +37,12 @@ void Kamikazi::attack(Actor* actor)
 }
 
 void Kamikazi::update() {
-	if (getHealth() <= 0) {
-		this->getGame()->setScore(2);
-		this->getGame()->remove(this);
-		return;
-	}
-
 	// Check for wall collisions
 	int x = getPosition()->getX();
 	int y = getPosition()->getY();
 	if (getGame()->getMap()->isWall(x, y)) {
 		this->getGame()->remove(this);
+		return;
 	}
 	// end Check
 	

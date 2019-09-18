@@ -1,6 +1,9 @@
 #include "Map.h"
 #include "GameObject.h"
 #include "Position.h"
+#include "Game.h"
+#include "Kamikazi.h"
+#include "Gunner.h"
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
@@ -58,8 +61,20 @@ void Map::scroll() {
 			m_map[i][n_columns - 1] = Map::SPACE; 
 		}
 	}
-
+	
+	if(m_game->trueWithProbability(.04)) {
+		//spawn kamikazee
+		Kamikazi* k = new Kamikazi(m_game);
+		k->setPosition(60, 15);
+		m_game->add(k);
+	}
+	else if (m_game->trueWithProbability(.3)) {
+		//spawn gunner
+		//m_game->add(new Gunner(m_game));
+	}
+	
 	++scrollIndex;
+	
 }
 
 void Map::draw(std::vector<GameObject *> *objects) {
@@ -82,4 +97,8 @@ void Map::draw(std::vector<GameObject *> *objects) {
 	{
 		cout << m_mapBuffer[i] << endl; 
 	}
+}
+
+void Map::setGame(Game* game) {
+	m_game = game; 
 }
