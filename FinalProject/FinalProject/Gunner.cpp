@@ -63,10 +63,13 @@ void Gunner::move()
 	}
 	
 	setPosition(getPosition()->getX(), getPosition()->getY() + movementOffset);
-	int x = getPosition()->getX();
+	int x = getPosition()->getX();
+
 	int y = getPosition()->getY();
-	if (getGame()->getMap()->isWall(x, y)) {
-		this->getGame()->remove(this);
+	if (getGame()->getMap()->isWall(x, y)) {
+
+		this->getGame()->remove(this);
+
 	}
 
 }
