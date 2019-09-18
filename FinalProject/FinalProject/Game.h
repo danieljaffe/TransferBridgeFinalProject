@@ -24,7 +24,7 @@ public:
 	Actor* getPlayer();
 	void setPlayer(Actor*);
 	int randInt(int min, int max);
-	bool trueWithProbabitiliy(double p);
+	bool trueWithProbability(double p);
 	void add(GameObject* obj);
 
 	std::vector<GameObject*> getGameObjects();
