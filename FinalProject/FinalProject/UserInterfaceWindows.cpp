@@ -162,7 +162,8 @@ bool getCharIfAny(char& ch)
               case 'd':  ch = ARROW_RIGHT; break;
               case 'w':  ch = ARROW_UP;    break;
               case 's':  ch = ARROW_DOWN;  break;
-              default:   ch = c;           break;
+			  case ' ':  ch = SPACE_BAR;   break;
+			  default:   ch = c;           break;
             }
         }
         return true;
