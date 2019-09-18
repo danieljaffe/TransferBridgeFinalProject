@@ -33,7 +33,8 @@ void Kamikazi::attack(Actor* actor)
 		actor->setArmor(enemyArmor - getPower());
 	}
 
-	this->getGame()->remove(this);
+	this->setDestroyFlag(true);
+	//this->getGame()->remove(this);
 }
 
 void Kamikazi::update() {
@@ -41,7 +42,8 @@ void Kamikazi::update() {
 	int x = getPosition()->getX();
 	int y = getPosition()->getY();
 	if (getGame()->getMap()->isWall(x, y)) {
-		this->getGame()->remove(this);
+		//this->getGame()->remove(this);
+		this->setDestroyFlag(true);
 		return;
 	}
 	// end Check

@@ -71,14 +71,9 @@ void Game::play()
 
 			std::vector<GameObject*>::iterator it = m_gameObjects->begin();
 
-			while (it != m_gameObjects->end())
+			for(int i = 0; i < m_gameObjects->size(); i++)
 			{
-				if ((*it)->getDestroyFlag())
-				{
-					remove(*it);
-				}
-
-				++it;
+				remove(m_gameObjects->at(i));
 			}
 
 
@@ -90,9 +85,9 @@ void Game::play()
 			start = clock();
 
 
-			for (GameObject* obj : *(m_gameObjects))
+			for (int i = 0; i < m_gameObjects->size(); i++)
 			{
-				obj->update();
+				m_gameObjects->at(i)->update();
 			}
 
 			//add(new Kamikazi(this, 1, 1, 1, 1, 15, 'k', 60, 15));
@@ -132,30 +127,15 @@ std::vector<GameObject*> Game::getGameObjects() {
 
 bool Game::remove(GameObject* obj)
 {
-
-	std::vector<GameObject*>::iterator it = m_gameObjects->begin();
-
-	while (it != m_gameObjects->end())
+	for (int i = 0; i < m_gameObjects->size(); i++)
 	{
-		if ((*it)->getDestroyFlag())
-		{
-			m_gameObjects->erase(it);
-			delete (*it);
-			return true;
-		}
-
-		++it;
-	}
-	/*for (int i = 0; i < m_gameObjects->size(); i++)
-	{
-		if (m_gameObjects->at(i) == obj)
+		if (m_gameObjects->at(i)->getDestroyFlag())
 		{
 			m_gameObjects->erase(m_gameObjects->begin() + i);
 			delete obj;
 			return true;
 		}
 	}
-	return false;*/
 	return false;
 }
 
