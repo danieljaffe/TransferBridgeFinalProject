@@ -70,10 +70,21 @@ void Game::play()
 		{
 
 			std::vector<GameObject*>::iterator it = m_gameObjects->begin();
+			bool checkAgain = true;
 
-			for(int i = 0; i < m_gameObjects->size(); i++)
+			while (checkAgain)
 			{
-				remove(m_gameObjects->at(i));
+				checkAgain = false;
+				for (int i = 0; i < m_gameObjects->size(); i++)
+				{
+					if (m_gameObjects->at(i)->getDestroyFlag())
+					{
+						remove(m_gameObjects->at(i));
+						checkAgain = true;
+						break;
+					}
+				}
+
 			}
 
 
@@ -83,7 +94,6 @@ void Game::play()
 			map.draw(m_gameObjects);
 			cout << "Score: " << m_score;
 			start = clock();
-
 
 			for (int i = 0; i < m_gameObjects->size(); i++)
 			{
