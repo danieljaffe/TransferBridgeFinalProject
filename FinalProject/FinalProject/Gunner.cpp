@@ -75,6 +75,11 @@ void Gunner::move()
 }
 
 void Gunner::update() {
+	if (getHealth() <= 0) {
+		this->getGame()->remove(this);
+		return;
+	}
+
 	Actor* player = this->getGame()->getPlayer();
 
 	int playerX = player->getPosition()->getX();
