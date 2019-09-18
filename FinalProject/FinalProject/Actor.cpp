@@ -12,7 +12,7 @@ Actor::Actor(Game* game, int hp, int arm, int pwr, int rate, char character, int
 	m_fireRate = rate;
 	m_numBullets = 0;
 
-	m_currTime = std::clock_t();
+	m_currTime = std::time(nullptr);
 	m_lastTimeFired = m_currTime;
 
 	m_effects = new std::vector<Effect*>;
@@ -58,12 +58,12 @@ int Actor::getNumBullets()
 	return m_numBullets;
 }
 
-double Actor::getCurrTime()
+std::time_t Actor::getCurrTime()
 {
-	return m_currTime;
+	return std::time(nullptr);
 }
 
-double Actor::getLastTimeFired()
+std::time_t Actor::getLastTimeFired()
 {
 	return m_lastTimeFired;
 }
@@ -73,14 +73,14 @@ std::vector<Effect*>* Actor::getEffects()
 	return m_effects;
 }
 
-void Actor::setLastTimeFired(double lastFired)
+void Actor::setLastTimeFired(std::time_t lastFired)
 {
 	m_lastTimeFired = lastFired;
 }
 
-void Actor::setCurrTime(double currTime)
+void Actor::setCurrTime()
 {
-	m_currTime = currTime;
+	m_currTime = std::time(nullptr);
 }
 
 void Actor::setNumBullets(int number)

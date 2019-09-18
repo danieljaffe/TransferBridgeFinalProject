@@ -6,6 +6,7 @@
 #include "UserInterface.h"
 #include "Item.h"
 #include "Effect.h"
+#include <iostream>
 #include <vector>
 #include <ctime>
 
@@ -19,10 +20,13 @@ Player::~Player() {}
 
 void Player::attack(Actor* enemy)
 {
-	setCurrTime(std::clock_t());
+	setCurrTime();	
 
-	if (getLastTimeFired() + getFireRate() < getCurrTime()) {
+
+	if (std::difftime(getCurrTime(), getLastTimeFired()) > getFireRate()) {
+		
 		//Actor* enemy = this->getGame()->getPlayer();
+
 		
 
 		Bullet* temp1 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() + 1, getPosition()->getY(), true);
