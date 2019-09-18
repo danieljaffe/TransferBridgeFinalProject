@@ -12,6 +12,7 @@ public:
 	virtual ~Gunner();
 	virtual void attack(Actor*);
 	virtual void move();
+	virtual void update();
 private:
 	std::clock_t m_currTime;
 	double m_lastTimeFired;

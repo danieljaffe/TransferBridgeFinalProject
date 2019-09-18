@@ -21,6 +21,7 @@ public:
 	void setDisplayChar(char);
 	void setGame(Game*);
 
+	virtual void update() = 0;
 private:
 	// Member variables
 	char m_displayChar;
