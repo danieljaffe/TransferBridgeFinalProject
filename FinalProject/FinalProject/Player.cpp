@@ -21,7 +21,7 @@ void Player::attack(Actor* enemy)
 {
 	setCurrTime(std::clock_t());
 
-	if (getLastTimeFired() + getFireRate() < getLastTimeFired()) {
+	if (getLastTimeFired() + getFireRate() < getCurrTime()) {
 		//Actor* enemy = this->getGame()->getPlayer();
 		
 
@@ -46,7 +46,6 @@ void Player::attack(Actor* enemy)
 void Player::move()
 {
 	char input;
-	
 	getCharIfAny(input);
 
 	int x = getPosition()->getX();
@@ -61,6 +60,9 @@ void Player::move()
 		break;
 	case ARROW_RIGHT: x++;
 		break;
+	case SPACE_BAR: 
+		attack(nullptr);
+		break;
 	default:
 		break;
 	}
@@ -74,6 +76,11 @@ void Player::move()
 
 void Player::update()
 {
+	if (getHealth() <= 0) {
+		this->getGame()->remove(this);
+		return;
+	}
+
 	move();
 
 	std::vector<GameObject*> gameObjects = getGame()->getGameObjects();
