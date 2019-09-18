@@ -77,6 +77,7 @@ void Kamikazi::move()
 
 	if (getPosition() == player->getPosition()) {
 		attack(player);
+		return;
 	}
 	
 	int playerX = player->getPosition()->getX();
