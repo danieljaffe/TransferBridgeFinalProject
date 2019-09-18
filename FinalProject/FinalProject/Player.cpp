@@ -36,6 +36,10 @@ void Player::move(char input)
 	getPosition()->setY(y);
 }
 
+void Player::update()
+{
+}
+
 void Player::applyEffects()
 {
 }

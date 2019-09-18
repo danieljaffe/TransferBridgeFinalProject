@@ -63,3 +63,7 @@ void Kamikazi::move(Actor* player)
 
 	//return newPos;
 }
+
+void Kamikazi::update()
+{
+}

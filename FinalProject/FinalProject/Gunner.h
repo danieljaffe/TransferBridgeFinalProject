@@ -10,6 +10,7 @@ public:
 	virtual ~Gunner();
 	virtual void attack(Actor*);
 	virtual void move();
+	virtual void update();
 private:
 	// private vars here
 };

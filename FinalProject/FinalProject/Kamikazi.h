@@ -10,6 +10,7 @@ public:
 	virtual void attack(Actor*);
 	virtual void updatePosition(Actor*, int);
 	virtual void move(Actor*);
+	virtual void update();
 private:
 	// private vars here
 };
