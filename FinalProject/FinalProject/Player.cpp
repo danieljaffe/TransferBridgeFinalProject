@@ -42,7 +42,9 @@ void Player::attack(Actor* enemy)
 
 void Player::move()
 {
-	char input = getCharIfAny();
+	char input;
+	
+	getCharIfAny(input);
 
 	int x = getPosition()->getX();
 	int y = getPosition()->getY();
