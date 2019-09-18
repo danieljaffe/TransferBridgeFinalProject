@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "Bullet.h"
 #include "UserInterface.h"
+#include <vector>
 #include <ctime>
 
 // Constructors and Destructors
@@ -72,6 +73,17 @@ void Player::move()
 void Player::update()
 {
 	move();
+
+	std::vector<GameObject*> gameObjects = getGame()->getGameObjects();
+
+	for (int i = 0; i < gameObjects.size; i++) {
+		if ((gameObjects.at(i)->getPosition() == getPosition()) && ((gameObjects.at(i)->getDisplayChar() == '$') 
+			|| (gameObjects.at(i)->getDisplayChar() == '+'))) {
+
+
+			// you found an item. add it to the player's collection or something
+		}
+	}
 }
 
 void Player::applyEffects()
