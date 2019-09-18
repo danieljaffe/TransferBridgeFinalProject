@@ -1,10 +1,14 @@
 #include "Kamikazi.h"
 #include "Position.h"
+#include "Actor.h"
+#include "Map.h"
 #include <cmath>
 
 Kamikazi::Kamikazi(Game* game, int hp, int arm, int pwr, int rate, int sightDistance, char character, int x, int y) :
 	Enemy(game, hp, arm, pwr, rate, sightDistance, character, x, y) {
 	
+	m_startingMoves = Map::n_columns / 8;
+
 	// constructor here
 }
 
@@ -27,13 +31,37 @@ void Kamikazi::attack(Actor* actor)
 	}	
 }
 
-//void Kamikazi::updatePosition(Actor* actor, int startingMoves) {
-//
-//}
+void Kamikazi::update() {
+	Actor* player = this->getGame()->getPlayer();
 
-void Kamikazi::move(Actor* player)
+	int playerX = player->getPosition()->getX();
+	int playerY = player->getPosition()->getY();
+
+	int enemyX = getPosition()->getX();
+	int enemyY = getPosition()->getY();
+	
+	
+	if (m_startingMoves >= 0) {
+		setPosition(enemyX - 1, enemyY);
+	}
+	else {
+		move();
+	}
+
+	
+
+	if ((playerX + 1 == enemyX) && (playerY == enemyY)) {
+		attack(player);
+	}	
+
+	m_startingMoves--;
+}
+
+void Kamikazi::move()
 {
 	//Position* newPos = getPosition();
+
+	Actor* player = this->getGame()->getPlayer();
 
 	if (getPosition() == player->getPosition()) {
 		attack(player);
@@ -62,8 +90,4 @@ void Kamikazi::move(Actor* player)
 	}
 
 	//return newPos;
-}
-
-void Kamikazi::update()
-{
 }

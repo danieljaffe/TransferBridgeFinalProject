@@ -8,6 +8,7 @@
 // [Add other #include directives as necessary.]
 
 class Map;
+class Actor;
 
 class Game
 {
@@ -17,6 +18,8 @@ public:
     bool playOneLevel();
     void displayPrompt(std::string s);
     void displayStatus();
+	Actor* getPlayer();
+	void setPlayer(Actor*);
     
     // [Add other members as necessary.]
     
@@ -24,6 +27,7 @@ private:
     Gameboard   m_board;
     Screen		m_screen;
     int			m_level;
+	Actor* m_player;
 	
 	static const int TARGET_FPS = 30; 
 	

@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Gameboard.h"
 #include "UserInterface.h"
+#include "Actor.h"
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -95,3 +96,6 @@ bool Game::playOneLevel()
     return false;  // [Replace this with the code to play a level.]
 }
 
+void Game::setPlayer(Actor* player) { m_player = player; }
+
+Actor* Game::getPlayer() { return m_player; }

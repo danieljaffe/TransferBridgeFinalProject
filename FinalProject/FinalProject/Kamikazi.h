@@ -2,6 +2,9 @@
 #define KAMIKAZI_H
 
 #include "Enemy.h"
+#include "Game.h"
+
+class Actor;
 
 class Kamikazi : public Enemy {
 public:
@@ -9,10 +12,10 @@ public:
 	virtual ~Kamikazi();
 	virtual void attack(Actor*);
 	//virtual void updatePosition(Actor*, int);
-	virtual void move(Actor*);
+	virtual void move();
 	virtual void update();
 private:
-	int startingMoves; // movement state
+	int m_startingMoves; // movement state
 	// private vars here
 };
 
