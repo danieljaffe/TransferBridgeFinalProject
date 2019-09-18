@@ -68,6 +68,7 @@ void Player::move()
 
 void Player::update()
 {
+	move();
 }
 
 void Player::applyEffects()
