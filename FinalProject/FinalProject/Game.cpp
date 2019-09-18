@@ -99,6 +99,10 @@ void Game::add(GameObject* obj)
 	m_gameObjects->push_back(obj);
 }
 
+std::vector<GameObject*> Game::getGameObjects() {
+	return *m_gameObjects;
+}
+
 bool Game::remove(GameObject* obj)
 {
 	for (int i = 0; i < m_gameObjects->size(); i++)
@@ -111,6 +115,11 @@ bool Game::remove(GameObject* obj)
 		}
 	}
 	return false;
+}
+
+Map* Game::getMap()
+{
+	return &map;
 }
 
 
