@@ -28,7 +28,9 @@ void Kamikazi::attack(Actor* actor)
 	}
 	else {
 		actor->setArmor(enemyArmor - getPower());
-	}	
+	}
+
+	this->getGame()->remove(this);
 }
 
 void Kamikazi::update() {

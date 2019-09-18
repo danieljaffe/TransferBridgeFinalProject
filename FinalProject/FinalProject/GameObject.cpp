@@ -6,7 +6,10 @@ GameObject::GameObject(Game* game, char character, int x, int y) : m_pos(new Pos
 	m_game = game;
 	m_displayChar = character; 
 }
-GameObject::~GameObject() { delete m_pos; }
+GameObject::~GameObject() { 
+	delete m_pos; 
+	delete m_game;
+}
 
 // Getters
 Position* GameObject::getPosition() { return m_pos; }

@@ -3,6 +3,7 @@
 #include "Gameboard.h"
 #include "UserInterface.h"
 #include "Actor.h"
+#include "Kamikazi.h"
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -51,7 +52,7 @@ void Game::play()
     }
     //displayPrompt("Game Over!  Press the Enter key to exit!");
 	//std::cout << "heckin " << std::endl;
-	map.draw(nullptr);
+	map.draw(m_gameObjects);
 	waitForEnter();
 	while (!0) 
 	{
@@ -62,9 +63,13 @@ void Game::play()
 			//m_screen.clear();
 			system("CLS");
 			map.scroll();
-			map.draw(nullptr);
+			map.draw(m_gameObjects);
 			start = clock();
+
+			//add(new Kamikazi(this, 1, 1, 1, 1, 15, 'k', 60, 15));
 			
+			
+
 			char input;
 
 			getCharIfAny(input);
@@ -101,6 +106,8 @@ bool Game::remove(GameObject* obj)
 		if (m_gameObjects->at(i) == obj)
 		{
 			m_gameObjects->erase(m_gameObjects->begin() + i);
+			delete obj;
+			return true;
 		}
 	}
 	return false;
