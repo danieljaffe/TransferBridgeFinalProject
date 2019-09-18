@@ -11,6 +11,8 @@ Gunner::Gunner(Game* game, int hp, int arm, int pwr, int rate, int sightDistance
 
 	//m_clock = std::clock();	
 	// constructor here
+
+	setStartingMoves(10);
 }
 
 Gunner::~Gunner()
@@ -34,13 +36,13 @@ void Gunner::attack(Actor* player)
 		int enemyX = getPosition()->getX();
 		int enemyY = getPosition()->getY();
 
-		Bullet* temp1 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() - 1, getPosition()->getY(), true);
+		Bullet* temp1 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() - 1, getPosition()->getY(), false);
 		getGame()->add(temp1);
 
 		if (getNumBullets() == 3) {
 
-			Bullet* temp2 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() - 1, getPosition()->getY() + 1, true);
-			Bullet* temp3 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() - 1, getPosition()->getY() - 1, true);
+			Bullet* temp2 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() - 1, getPosition()->getY() + 1, false);
+			Bullet* temp3 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() - 1, getPosition()->getY() - 1, false);
 
 
 			getGame()->add(temp2);
@@ -53,10 +55,10 @@ void Gunner::attack(Actor* player)
 
 void Gunner::move()
 {
-	int movementOffset=0;
+	/*int movementOffset=0;
 	
 	if (getGame()->trueWithProbability(.5)) {
-		movementOffset = getGame()->randInt(-1, 1);
+		movementOffset = getGame()->randInt(-2, 1);
 	}
 	
 	setPosition(getPosition()->getX(), getPosition()->getY() + movementOffset);
@@ -67,7 +69,7 @@ void Gunner::move()
 
 		this->getGame()->remove(this);
 
-	}
+	}*/
 
 }
 
@@ -77,6 +79,15 @@ void Gunner::update() {
 	if (getHealth() <= 0) {
 		this->getGame()->setScore(4);
 		this->getGame()->remove(this);
+		return;
+	}
+
+	// Check for wall collisions
+	int x = getPosition()->getX();
+	int y = getPosition()->getY();
+	if (getGame()->getMap()->isWall(x, y)) {
+		//this->getGame()->remove(this);
+		this->setDestroyFlag(true);
 		return;
 	}
 
@@ -96,10 +107,8 @@ void Gunner::update() {
 		move();
 	}
 
+	attack(player);
 
-	if (playerY == enemyY) {
-		attack(player);
-	}
 
-	setStartingMoves(getSightDistance() - 1);
+	setStartingMoves(getStartingMoves() - 1);
 }

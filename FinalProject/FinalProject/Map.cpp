@@ -65,12 +65,15 @@ void Map::scroll() {
 	if(m_game->trueWithProbability(.04)) {
 		//spawn kamikazee
 		Kamikazi* k = new Kamikazi(m_game);
-		k->setPosition(60, 15);
+		k->setPosition(n_columns - 1, m_game->randInt(10, 20));
 		m_game->add(k);
 	}
-	else if (m_game->trueWithProbability(.3)) {
+	else if (m_game->trueWithProbability(.01)) {
 		//spawn gunner
-		//m_game->add(new Gunner(m_game));
+		 
+		Gunner* g = new Gunner(m_game);
+		g->setPosition(n_columns - 3, m_game->randInt(10, 20));
+		m_game->add(g);
 	}
 	
 	++scrollIndex;
