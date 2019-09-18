@@ -74,6 +74,8 @@ void Gunner::move()
 }
 
 void Gunner::update() {
+	Actor::update();
+
 	if (getHealth() <= 0) {
 		this->getGame()->setScore(4);
 		this->getGame()->remove(this);

@@ -1,5 +1,6 @@
 #include "GameObject.h"
 #include "Position.h"
+#include "Map.h"
 
 // Constructors and Destructors
 GameObject::GameObject(Game* game, char character, int x, int y) : m_pos(new Position(x,y)) { 
@@ -30,4 +31,19 @@ void GameObject::setDestroyFlag(bool destroy)
 bool GameObject::getDestroyFlag()
 {
 	return m_destroy;
+}
+
+void GameObject::update()
+{
+	int x = getPosition()->getX();
+	int y = getPosition()->getY();
+
+	if ((x < 0) || (y < 0))
+	{
+		setDestroyFlag(true);
+	}
+	if ((x > Map::n_columns) || (y > Map::n_rows - 1))
+	{
+		setDestroyFlag(true);
+	}
 }
