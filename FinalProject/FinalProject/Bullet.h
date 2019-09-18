@@ -3,6 +3,8 @@
 
 #include "Actor.h"
 
+class Game;
+
 class Bullet : public Actor {
 public:
 	Bullet(Game*, int hp = 1, int arm = 0, int pwr = 1, int rate = 0, char character = '-', 

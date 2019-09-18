@@ -5,6 +5,7 @@
 #include <ctime>
 
 class Game;
+class Actor;
 
 class Gunner : public Enemy {
 public:
@@ -14,8 +15,7 @@ public:
 	virtual void move();
 	virtual void update();
 private:
-	std::clock_t m_currTime;
-	double m_lastTimeFired;
+	
 	// private vars here
 };
 

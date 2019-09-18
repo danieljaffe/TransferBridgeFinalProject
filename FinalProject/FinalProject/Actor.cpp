@@ -1,6 +1,7 @@
 
 #include "Actor.h"
 #include "Position.h"
+#include <ctime>
 
 // Constructor and Destructor
 Actor::Actor(Game* game, int hp, int arm, int pwr, int rate, char character, int x, int y) : GameObject(game, character, x, y) {
@@ -10,6 +11,9 @@ Actor::Actor(Game* game, int hp, int arm, int pwr, int rate, char character, int
 	m_power = pwr;
 	m_fireRate = rate;
 	m_numBullets = 0;
+
+	m_currTime = std::clock_t();
+	m_lastTimeFired = m_currTime;
 }
 
 Actor::~Actor() {
@@ -50,6 +54,26 @@ void Actor::addEffect(Effect* effect)
 int Actor::getNumBullets()
 {
 	return m_numBullets;
+}
+
+double Actor::getCurrTime()
+{
+	return m_currTime;
+}
+
+double Actor::getLastTimeFired()
+{
+	return m_lastTimeFired;
+}
+
+void Actor::setLastTimeFired(double lastFired)
+{
+	m_lastTimeFired = lastFired;
+}
+
+void Actor::setCurrTime(double currTime)
+{
+	m_currTime = currTime;
 }
 
 void Actor::setNumBullets(int number)

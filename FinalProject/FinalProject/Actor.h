@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include <vector>
+#include <ctime>
 
 class Effect;
 class Position;
@@ -19,6 +20,10 @@ public:
 	int getPower();
 	int getFireRate();
 	int getNumBullets();
+	double getCurrTime();
+	double getLastTimeFired();
+	void setLastTimeFired(double);
+	void setCurrTime(double);
 	void setNumBullets(int);
 	void setArmor(int);
 	void setHealth(int);
@@ -33,6 +38,8 @@ private:
 	int m_power;
 	int m_fireRate;
 	int m_numBullets;
+	std::clock_t m_currTime;
+	double m_lastTimeFired;
 	std::vector<Effect*>* m_effects;
 };
 
