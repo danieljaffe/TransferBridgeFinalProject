@@ -31,6 +31,8 @@ public:
 
 	bool remove(GameObject* obj);
 	Map* getMap();
+	int getScore();
+	void setScore(int points);
     
     // [Add other members as necessary.]
     
@@ -39,6 +41,7 @@ private:
     Screen		m_screen;
     int			m_level;
 	Actor* m_player;
+	int m_score;
 	
 	static const int TARGET_FPS = 30;
 
