@@ -27,9 +27,9 @@ void Kamikazi::attack(Actor* actor)
 	}	
 }
 
-void Kamikazi::updatePosition(Actor* actor, int startingMoves) {
-
-}
+//void Kamikazi::updatePosition(Actor* actor, int startingMoves) {
+//
+//}
 
 void Kamikazi::move(Actor* player)
 {
