@@ -14,6 +14,8 @@ Actor::Actor(Game* game, int hp, int arm, int pwr, int rate, char character, int
 
 	m_currTime = std::clock_t();
 	m_lastTimeFired = m_currTime;
+
+	m_effects = new std::vector<Effect*>;
 }
 
 Actor::~Actor() {
@@ -64,6 +66,11 @@ double Actor::getCurrTime()
 double Actor::getLastTimeFired()
 {
 	return m_lastTimeFired;
+}
+
+std::vector<Effect*>* Actor::getEffects()
+{
+	return m_effects;
 }
 
 void Actor::setLastTimeFired(double lastFired)
