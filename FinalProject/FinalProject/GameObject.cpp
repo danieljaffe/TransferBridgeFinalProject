@@ -5,6 +5,7 @@
 GameObject::GameObject(Game* game, char character, int x, int y) : m_pos(new Position(x,y)) { 
 	m_game = game;
 	m_displayChar = character; 
+	m_destroy = false;
 }
 GameObject::~GameObject() { 
 	delete m_pos;

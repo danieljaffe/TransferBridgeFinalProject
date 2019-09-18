@@ -33,7 +33,8 @@ void Kamikazi::attack(Actor* actor)
 		actor->setArmor(enemyArmor - getPower());
 	}
 
-	this->getGame()->remove(this);
+	this->setDestroyFlag(true);
+	//this->getGame()->remove(this);
 }
 
 void Kamikazi::update() {
@@ -41,7 +42,8 @@ void Kamikazi::update() {
 	int x = getPosition()->getX();
 	int y = getPosition()->getY();
 	if (getGame()->getMap()->isWall(x, y)) {
-		this->getGame()->remove(this);
+		//this->getGame()->remove(this);
+		this->setDestroyFlag(true);
 		return;
 	}
 	// end Check
@@ -55,20 +57,15 @@ void Kamikazi::update() {
 	int enemyY = getPosition()->getY();
 	
 	
-	if (getStartingMoves() >= 0) {
-		setPosition(enemyX - 1, enemyY);
-	}
-	else {
-		move();
-	}
 
+	move();
 	
 
 	if ((playerX + 1 == enemyX) && (playerY == enemyY)) {
 		attack(player);
 	}	
 
-	setStartingMoves(getSightDistance() - 1);
+	
 }
 
 void Kamikazi::move()
@@ -88,21 +85,20 @@ void Kamikazi::move()
 	int enemyX = getPosition()->getX();
 	int enemyY = getPosition()->getY();
 
-	int separationDistance = std::sqrt(std::pow((enemyX - playerX), 2) + std::pow((enemyY - playerY), 2));
+	/*int separationDistance = std::sqrt(std::pow((enemyX - playerX), 2) + std::pow((enemyY - playerY), 2));*/
 
-	if (separationDistance <= getSightDistance()) {
-		setPosition(enemyX - 1, enemyY);
+	
 		
-		if (playerY > enemyY) {
-			setPosition(this->getPosition()->getX(), enemyY + 1);
-		}
-		else if (playerY < enemyY) {
-			setPosition(this->getPosition()->getX(), enemyY - 1);
-		}
-		else {
-			// player and enemy are on same y-coord. Just move along x only
-		}		
+		
+	if (playerY > enemyY) {
+		setPosition(enemyX - 2, enemyY + 1);
 	}
-
+	else if (playerY < enemyY) {
+		setPosition(enemyX - 2, enemyY - 1);
+	}
+	else {
+		setPosition(enemyX - 2, enemyY);
+	}		
+	
 	//return newPos;
 }

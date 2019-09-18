@@ -62,7 +62,7 @@ void Game::play()
 	map.draw(m_gameObjects);
 	cout << "Score: " << m_score;
 	waitForEnter();
-	while (!0) 
+	while (!isGameOver()) 
 	{
 		duration = (clock() - start) / (double)CLOCKS_PER_SEC;
 		
@@ -70,15 +70,21 @@ void Game::play()
 		{
 
 			std::vector<GameObject*>::iterator it = m_gameObjects->begin();
+			bool checkAgain = true;
 
-			while (it != m_gameObjects->end())
+			while (checkAgain)
 			{
-				if ((*it)->getDestroyFlag())
+				checkAgain = false;
+				for (int i = 0; i < m_gameObjects->size(); i++)
 				{
-					remove(*it);
+					if (m_gameObjects->at(i)->getDestroyFlag())
+					{
+						remove(m_gameObjects->at(i));
+						checkAgain = true;
+						break;
+					}
 				}
 
-				++it;
 			}
 
 
@@ -89,10 +95,9 @@ void Game::play()
 			cout << "Score: " << m_score;
 			start = clock();
 
-
-			for (GameObject* obj : *(m_gameObjects))
+			for (int i = 0; i < m_gameObjects->size(); i++)
 			{
-				obj->update();
+				m_gameObjects->at(i)->update();
 			}
 
 			//add(new Kamikazi(this, 1, 1, 1, 1, 15, 'k', 60, 15));
@@ -132,30 +137,15 @@ std::vector<GameObject*> Game::getGameObjects() {
 
 bool Game::remove(GameObject* obj)
 {
-
-	std::vector<GameObject*>::iterator it = m_gameObjects->begin();
-
-	while (it != m_gameObjects->end())
+	for (int i = 0; i < m_gameObjects->size(); i++)
 	{
-		if ((*it)->getDestroyFlag())
-		{
-			m_gameObjects->erase(it);
-			delete (*it);
-			return true;
-		}
-
-		++it;
-	}
-	/*for (int i = 0; i < m_gameObjects->size(); i++)
-	{
-		if (m_gameObjects->at(i) == obj)
+		if (m_gameObjects->at(i)->getDestroyFlag())
 		{
 			m_gameObjects->erase(m_gameObjects->begin() + i);
 			delete obj;
 			return true;
 		}
 	}
-	return false;*/
 	return false;
 }
 
@@ -172,6 +162,19 @@ int Game::getScore()
 void Game::setScore(int points)
 {
 	m_score += points;
+}
+
+bool Game::isGameOver()
+{
+	return m_gameOver;
+}
+
+void Game::setGameOver(bool gameOver)
+{
+	m_gameOver = gameOver;
+
+	if(gameOver)
+		std::cout << "--------------------------------GAME OVERRRR--------------------------" << std::endl;
 }
 
 int Game::randInt(int min, int max) {
