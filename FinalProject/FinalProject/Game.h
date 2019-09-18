@@ -2,9 +2,11 @@
 #define GAME_INCLUDED
 
 #include "Gameboard.h"
+#include "GameObject.h"
 #include "UserInterface.h"
 #include "Map.h" 
 #include <string>
+#include <vector>
 // [Add other #include directives as necessary.]
 
 class Map;
@@ -20,6 +22,10 @@ public:
     void displayStatus();
 	Actor* getPlayer();
 	void setPlayer(Actor*);
+
+	void add(GameObject* obj);
+
+	bool remove(GameObject* obj);
     
     // [Add other members as necessary.]
     
@@ -29,7 +35,9 @@ private:
     int			m_level;
 	Actor* m_player;
 	
-	static const int TARGET_FPS = 30; 
+	static const int TARGET_FPS = 30;
+
+	std::vector<GameObject*>* m_gameObjects;
 	
 	Map map; 
     // [Add other members as necessary.]

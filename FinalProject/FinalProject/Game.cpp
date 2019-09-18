@@ -20,6 +20,7 @@ const int PROMPT_X = 0;
 Game::Game(int width, int height)
 : m_screen(SCREEN_WIDTH, SCREEN_HEIGHT), m_level(1)
 {
+	m_gameObjects = new std::vector<GameObject*>();
 }
 
 // THIS CODE BELOW IS AN EXAMPLE OF HOW YOU CAN LAYOUT YOUR GAME
@@ -86,6 +87,23 @@ void Game::displayPrompt(std::string s)
 void Game::displayStatus()
 {
     // [Replace this with code to display the status.]
+}
+
+void Game::add(GameObject* obj)
+{
+	m_gameObjects->push_back(obj);
+}
+
+bool Game::remove(GameObject* obj)
+{
+	for (int i = 0; i < m_gameObjects->size(); i++)
+	{
+		if (m_gameObjects->at(i) == obj)
+		{
+			m_gameObjects->erase(m_gameObjects->begin() + i);
+		}
+	}
+	return false;
 }
 
 
