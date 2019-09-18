@@ -13,7 +13,7 @@ public:
 
 	// Member functions
 	virtual void attack(Actor*);
-	virtual void move(char character);
+	virtual void move();
 	virtual void update();
 	void applyEffects();
 	

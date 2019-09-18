@@ -4,6 +4,7 @@
 #include "UserInterface.h"
 #include "Actor.h"
 #include "Kamikazi.h"
+#include "Player.h"
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -42,6 +43,7 @@ void Game::play()
 	//displayPrompt("P");
     //waitForEnter();  // [in UserInterface.h] 
 
+	add(new Player(this));
 
 
     for(;;)
@@ -68,8 +70,13 @@ void Game::play()
 			map.draw(m_gameObjects);
 			start = clock();
 
+
+			for (GameObject* obj : *(m_gameObjects))
+			{
+				obj->update();
+			}
+
 			//add(new Kamikazi(this, 1, 1, 1, 1, 15, 'k', 60, 15));
-			
 			
 
 			char input;

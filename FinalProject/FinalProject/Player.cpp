@@ -3,6 +3,7 @@
 #include "Actor.h"
 #include "Game.h"
 #include "Bullet.h"
+#include "UserInterface.h"
 #include <ctime>
 
 // Constructors and Destructors
@@ -39,23 +40,23 @@ void Player::attack(Actor* enemy)
 
 }
 
-void Player::move(char input)
+void Player::move()
 {
+	char input;
+	
+	getCharIfAny(input);
+
 	int x = getPosition()->getX();
 	int y = getPosition()->getY();
 	switch (input)
 	{
-	case 'w': 
-	case 'W': y--;
+	case ARROW_UP: y--;
 		break;
-	case 'a': 
-	case 'A': x--;
+	case ARROW_LEFT: x--;
 		break;
-	case 's': 
-	case 'S': y++;
+	case ARROW_DOWN: y++;
 		break;
-	case 'd': 
-	case 'D': x++;
+	case ARROW_RIGHT: x++;
 		break;
 	default:
 		break;
@@ -69,6 +70,7 @@ void Player::move(char input)
 
 void Player::update()
 {
+	move();
 }
 
 void Player::applyEffects()
