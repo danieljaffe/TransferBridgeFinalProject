@@ -63,6 +63,7 @@ void Player::move()
 	}
 	if (getGame()->getMap()->isWall(x, y)) {
 		this->getGame()->remove(this);
+		return;
 	}
 	getPosition()->setX(x);
 	getPosition()->setY(y);

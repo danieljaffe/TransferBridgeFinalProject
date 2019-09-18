@@ -51,6 +51,7 @@ void Bullet::update() {
 	if (m_playerFire) {
 		if (getGame()->getMap()->isWall(bulletX + 1, bulletY)) {
 			this->getGame()->remove(this);
+			return;
 		}
 
 		// This is ugly and slow but forced due to the way the map ended up being implemented
@@ -64,7 +65,8 @@ void Bullet::update() {
 				// This is bad practice but again, forced due to the setup of the project
 				// Be sure to check for the correct character types or this will blow up!  :)
 				Actor* enemy = (Actor*)checkObject;
-				attack(enemy);	
+				attack(enemy);
+				return;
 			}
 		}
 	}

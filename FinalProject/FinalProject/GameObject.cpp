@@ -7,8 +7,7 @@ GameObject::GameObject(Game* game, char character, int x, int y) : m_pos(new Pos
 	m_displayChar = character; 
 }
 GameObject::~GameObject() { 
-	delete m_pos; 
-	delete m_game;
+	delete m_pos;
 }
 
 // Getters
