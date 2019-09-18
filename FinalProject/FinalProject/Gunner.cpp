@@ -60,7 +60,11 @@ void Gunner::attack(Actor* player)
 
 void Gunner::move()
 {
-
+	int x = getPosition()->getX();
+	int y = getPosition()->getY();
+	if (getGame()->getMap()->isWall(x, y)) {
+		this->getGame()->remove(this);
+	}
 
 }
 

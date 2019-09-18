@@ -50,7 +50,7 @@ void Bullet::update() {
 
 	if (m_playerFire) {
 		if (getGame()->getMap()->isWall(bulletX + 1, bulletY)) {
-			this->~Bullet();
+			this->getGame()->remove(this);
 		}
 
 		// This is ugly and slow but forced due to the way the map ended up being implemented
@@ -70,7 +70,7 @@ void Bullet::update() {
 	}
 	else {
 		if (getGame()->getMap()->isWall(bulletX - 1, bulletY)) {
-			this->~Bullet();
+			this->getGame()->remove(this);
 		}
 
 		Actor* player = this->getGame()->getPlayer();

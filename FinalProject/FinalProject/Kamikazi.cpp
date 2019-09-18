@@ -34,6 +34,14 @@ void Kamikazi::attack(Actor* actor)
 }
 
 void Kamikazi::update() {
+	// Check for wall collisions
+	int x = getPosition()->getX();
+	int y = getPosition()->getY();
+	if (getGame()->getMap()->isWall(x, y)) {
+		this->getGame()->remove(this);
+	}
+	// end Check
+	
 	Actor* player = this->getGame()->getPlayer();
 
 	int playerX = player->getPosition()->getX();

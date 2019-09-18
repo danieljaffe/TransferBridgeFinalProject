@@ -60,6 +60,9 @@ void Player::move(char input)
 	default:
 		break;
 	}
+	if (getGame()->getMap()->isWall(x, y)) {
+		this->getGame()->remove(this);
+	}
 	getPosition()->setX(x);
 	getPosition()->setY(y);
 }
