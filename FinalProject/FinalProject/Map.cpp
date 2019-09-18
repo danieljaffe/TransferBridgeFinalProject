@@ -62,14 +62,15 @@ void Map::scroll() {
 		}
 	}
 	
-	if(m_game->trueWithProbability(.4)) {
+	if(m_game->trueWithProbability(.04)) {
 		//spawn kamikazee
-
-		m_game->add(new Kamikazi(m_game));
+		Kamikazi* k = new Kamikazi(m_game);
+		k->setPosition(60, 15);
+		m_game->add(k);
 	}
 	else if (m_game->trueWithProbability(.3)) {
 		//spawn gunner
-		m_game->add(new Gunner(m_game));
+		//m_game->add(new Gunner(m_game));
 	}
 	
 	++scrollIndex;

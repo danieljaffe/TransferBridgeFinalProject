@@ -68,6 +68,20 @@ void Game::play()
 		
 		if (duration >= 1.0 / TARGET_FPS) 
 		{
+
+			std::vector<GameObject*>::iterator it = m_gameObjects->begin();
+
+			while (it != m_gameObjects->end())
+			{
+				if ((*it)->getDestroyFlag())
+				{
+					remove(*it);
+				}
+
+				++it;
+			}
+
+
 			//m_screen.clear();
 			system("CLS");
 			map.scroll();
@@ -118,7 +132,21 @@ std::vector<GameObject*> Game::getGameObjects() {
 
 bool Game::remove(GameObject* obj)
 {
-	for (int i = 0; i < m_gameObjects->size(); i++)
+
+	std::vector<GameObject*>::iterator it = m_gameObjects->begin();
+
+	while (it != m_gameObjects->end())
+	{
+		if ((*it)->getDestroyFlag())
+		{
+			m_gameObjects->erase(it);
+			delete (*it);
+			return true;
+		}
+
+		++it;
+	}
+	/*for (int i = 0; i < m_gameObjects->size(); i++)
 	{
 		if (m_gameObjects->at(i) == obj)
 		{
@@ -127,6 +155,7 @@ bool Game::remove(GameObject* obj)
 			return true;
 		}
 	}
+	return false;*/
 	return false;
 }
 
