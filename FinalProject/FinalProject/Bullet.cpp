@@ -35,6 +35,10 @@ void Bullet::move()
 	int bulletX = getPosition()->getX();
 	if (m_playerFire) { bulletX++; }
 	else { bulletX--; }
+	if (bulletX < 0 || bulletX >= Map::n_columns) {
+		this->getGame()->remove(this);
+		return;
+	}
 	getPosition()->setX(bulletX);
 }
 

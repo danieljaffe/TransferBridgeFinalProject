@@ -95,6 +95,10 @@ void Kamikazi::move()
 	int separationDistance = std::sqrt(std::pow((enemyX - playerX), 2) + std::pow((enemyY - playerY), 2));
 
 	if (separationDistance <= getSightDistance()) {
+		if (enemyX - 1 < 0) {
+			this->getGame()->remove(this);
+			return;
+		}
 		setPosition(enemyX - 1, enemyY);
 		
 		if (playerY > enemyY) {
