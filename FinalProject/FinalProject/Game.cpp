@@ -113,6 +113,11 @@ bool Game::remove(GameObject* obj)
 	return false;
 }
 
+Map* Game::getMap()
+{
+	return &map;
+}
+
 
 
 bool Game::playOneLevel()

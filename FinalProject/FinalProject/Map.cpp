@@ -29,6 +29,9 @@ Map::Map(){
 	
 }
 
+bool Map::isWall(int x, int y) {
+	return m_map[y][x] == Map::WALL;
+}
 
 void Map::scroll() {
 	int min = 1 + Map::MIN_WALL_DIST / 2;

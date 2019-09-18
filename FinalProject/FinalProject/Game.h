@@ -26,6 +26,7 @@ public:
 	void add(GameObject* obj);
 
 	bool remove(GameObject* obj);
+	Map* getMap();
     
     // [Add other members as necessary.]
     
