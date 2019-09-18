@@ -20,3 +20,13 @@ void GameObject::setPosition(Position* pos) { m_pos = pos; }
 void GameObject::setPosition(int x, int y) { m_pos->setX(x); m_pos->setY(y); }
 void GameObject::setDisplayChar(char character) { m_displayChar = character; }
 void GameObject::setGame(Game* game) { m_game = game; }
+
+void GameObject::setDestroyFlag(bool destroy)
+{
+	m_destroy = destroy;
+}
+
+bool GameObject::getDestroyFlag()
+{
+	return m_destroy;
+}

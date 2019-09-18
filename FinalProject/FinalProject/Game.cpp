@@ -25,6 +25,10 @@ Game::Game(int width, int height)
 {
 	m_score = 0;
 	m_gameObjects = new std::vector<GameObject*>();
+	m_player = new Player(this);
+	add(m_player);
+
+	map.setGame(this); 
 }
 
 // THIS CODE BELOW IS AN EXAMPLE OF HOW YOU CAN LAYOUT YOUR GAME
@@ -43,8 +47,6 @@ void Game::play()
     //displayPrompt("Press the Enter key to begin ENTER GAME NAME ");
 	//displayPrompt("P");
     //waitForEnter();  // [in UserInterface.h] 
-
-	add(new Player(this));
 
 
     for(;;)
@@ -66,6 +68,20 @@ void Game::play()
 		
 		if (duration >= 1.0 / TARGET_FPS) 
 		{
+
+			std::vector<GameObject*>::iterator it = m_gameObjects->begin();
+
+			while (it != m_gameObjects->end())
+			{
+				if ((*it)->getDestroyFlag())
+				{
+					remove(*it);
+				}
+
+				++it;
+			}
+
+
 			//m_screen.clear();
 			system("CLS");
 			map.scroll();
@@ -116,7 +132,21 @@ std::vector<GameObject*> Game::getGameObjects() {
 
 bool Game::remove(GameObject* obj)
 {
-	for (int i = 0; i < m_gameObjects->size(); i++)
+
+	std::vector<GameObject*>::iterator it = m_gameObjects->begin();
+
+	while (it != m_gameObjects->end())
+	{
+		if ((*it)->getDestroyFlag())
+		{
+			m_gameObjects->erase(it);
+			delete (*it);
+			return true;
+		}
+
+		++it;
+	}
+	/*for (int i = 0; i < m_gameObjects->size(); i++)
 	{
 		if (m_gameObjects->at(i) == obj)
 		{
@@ -125,6 +155,7 @@ bool Game::remove(GameObject* obj)
 			return true;
 		}
 	}
+	return false;*/
 	return false;
 }
 
@@ -147,7 +178,7 @@ int Game::randInt(int min, int max) {
 	return min + std::rand() % (max - min);
 }
 
-bool Game::trueWithProbabitiliy(double p)
+bool Game::trueWithProbability(double p)
 {
 	return std::rand() < p * RAND_MAX + p;
 }

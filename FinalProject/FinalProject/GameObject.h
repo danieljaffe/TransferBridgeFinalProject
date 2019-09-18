@@ -21,12 +21,17 @@ public:
 	void setDisplayChar(char);
 	void setGame(Game*);
 
+	void setDestroyFlag(bool destroy);
+	bool getDestroyFlag();
+
 	virtual void update() = 0;
 private:
 	// Member variables
 	char m_displayChar;
 	Position* m_pos;
 	Game* m_game;
+
+	bool m_destroy;
 };
 
 #endif
