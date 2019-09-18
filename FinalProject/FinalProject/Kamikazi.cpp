@@ -2,8 +2,8 @@
 #include "Position.h"
 #include <cmath>
 
-Kamikazi::Kamikazi(int hp, int arm, int pwr, int rate, int sightDistance, char character, int x, int y) :
-	Enemy(hp, arm, pwr, rate, sightDistance, character, x, y) {
+Kamikazi::Kamikazi(Game* game, int hp, int arm, int pwr, int rate, int sightDistance, char character, int x, int y) :
+	Enemy(game, hp, arm, pwr, rate, sightDistance, character, x, y) {
 	
 	// constructor here
 }

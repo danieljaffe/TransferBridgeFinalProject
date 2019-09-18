@@ -3,7 +3,8 @@
 #include "Position.h"
 
 // Constructor and Destructor
-Actor::Actor(int hp, int arm, int pwr, int rate, char character, int x, int y) : GameObject(character, x, y) {
+Actor::Actor(Game* game, int hp, int arm, int pwr, int rate, char character, int x, int y) : GameObject(game, character, x, y) {
+	setGame(game);
 	m_health = hp;
 	m_armor = arm;
 	m_power = pwr;
