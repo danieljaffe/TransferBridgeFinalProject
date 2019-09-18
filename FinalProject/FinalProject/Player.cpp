@@ -49,11 +49,14 @@ void Player::attack(Actor* enemy)
 
 void Player::move()
 {
-	char input;
-	getCharIfAny(input);
 
 	int x = getPosition()->getX();
 	int y = getPosition()->getY();
+
+
+	char input;
+	getCharIfAny(input);
+
 	switch (input)
 	{
 	case ARROW_UP: y--;
@@ -75,13 +78,22 @@ void Player::move()
 		//this->getGame()->remove(this);
 		return;
 	}
+
+	if ((x < 0) || (y < 0))
+	{
+		return;
+	}
+	if ((x > Map::n_columns) || (y > Map::n_rows - 1))
+	{
+		return;
+	}
+
 	getPosition()->setX(x);
 	getPosition()->setY(y);
 }
 
 void Player::update()
 {
-	Actor::update();
 
 	if (getHealth() <= 0) {
 		this->getGame()->remove(this);
