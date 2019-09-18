@@ -5,7 +5,7 @@
 
 // Constructor and Destructor
 Actor::Actor(Game* game, int hp, int arm, int pwr, int rate, char character, int x, int y) : GameObject(game, character, x, y) {
-	setGame(game);
+	//setGame(game);
 	m_health = hp;
 	m_armor = arm;
 	m_power = pwr;

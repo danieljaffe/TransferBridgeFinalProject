@@ -56,7 +56,7 @@ void Gunner::attack(Actor* player)
 
 void Gunner::move()
 {
-	int movementOffset;
+	int movementOffset=0;
 	
 	if (getGame()->trueWithProbability(.5)) {
 		movementOffset = getGame()->randInt(-1, 1);

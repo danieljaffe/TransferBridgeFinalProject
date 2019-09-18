@@ -23,8 +23,11 @@ const int PROMPT_X = 0;
 Game::Game(int width, int height)
 : m_screen(SCREEN_WIDTH, SCREEN_HEIGHT), m_level(1)
 {
-	map.setGame(this); 
 	m_gameObjects = new std::vector<GameObject*>();
+	m_player = new Player(this);
+	add(m_player);
+
+	map.setGame(this); 
 }
 
 // THIS CODE BELOW IS AN EXAMPLE OF HOW YOU CAN LAYOUT YOUR GAME
@@ -43,9 +46,6 @@ void Game::play()
     //displayPrompt("Press the Enter key to begin ENTER GAME NAME ");
 	//displayPrompt("P");
     //waitForEnter();  // [in UserInterface.h] 
-
-	m_player = new Player(this);
-	add(m_player); 
 
 
     for(;;)

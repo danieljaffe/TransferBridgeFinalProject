@@ -1,5 +1,6 @@
 #include "Kamikazi.h"
 #include "Position.h"
+#include "Game.h"
 #include "Actor.h"
 #include "Enemy.h"
 #include "Map.h"
