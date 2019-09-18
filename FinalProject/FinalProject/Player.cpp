@@ -71,7 +71,8 @@ void Player::move()
 		break;
 	}
 	if (getGame()->getMap()->isWall(x, y)) {
-		this->getGame()->remove(this);
+		getGame()->setGameOver(true);
+		//this->getGame()->remove(this);
 		return;
 	}
 	getPosition()->setX(x);

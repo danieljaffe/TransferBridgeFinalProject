@@ -62,7 +62,7 @@ void Game::play()
 	map.draw(m_gameObjects);
 	cout << "Score: " << m_score;
 	waitForEnter();
-	while (!0) 
+	while (!isGameOver()) 
 	{
 		duration = (clock() - start) / (double)CLOCKS_PER_SEC;
 		
@@ -162,6 +162,19 @@ int Game::getScore()
 void Game::setScore(int points)
 {
 	m_score += points;
+}
+
+bool Game::isGameOver()
+{
+	return m_gameOver;
+}
+
+void Game::setGameOver(bool gameOver)
+{
+	m_gameOver = gameOver;
+
+	if(gameOver)
+		std::cout << "--------------------------------GAME OVERRRR--------------------------" << std::endl;
 }
 
 int Game::randInt(int min, int max) {

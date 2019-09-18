@@ -33,6 +33,9 @@ public:
 	Map* getMap();
 	int getScore();
 	void setScore(int points);
+
+	bool isGameOver();
+	void setGameOver(bool gameOver);
     
     // [Add other members as necessary.]
     
@@ -46,6 +49,8 @@ private:
 	static const int TARGET_FPS = 30;
 
 	std::vector<GameObject*>* m_gameObjects;
+
+	bool m_gameOver = false;
 	
 	Map map; 
     // [Add other members as necessary.]
