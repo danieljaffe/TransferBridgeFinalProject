@@ -20,13 +20,10 @@ Gunner::~Gunner()
 
 void Gunner::attack(Actor* player)
 {
-	/*if (space is not availible) {
-		return;
-	}*/
+	setCurrTime();
 
-	setCurrTime(std::clock_t());
 
-	if (getLastTimeFired() + getFireRate() < getCurrTime()) {
+	if (std::difftime(getCurrTime(), getLastTimeFired()) > getFireRate()) {
 
 		Actor* player = this->getGame()->getPlayer();
 
@@ -37,13 +34,13 @@ void Gunner::attack(Actor* player)
 		int enemyX = getPosition()->getX();
 		int enemyY = getPosition()->getY();
 
-		Bullet* temp1 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() + 1, getPosition()->getY(), true);
+		Bullet* temp1 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() - 1, getPosition()->getY(), true);
 		getGame()->add(temp1);
 
 		if (getNumBullets() == 3) {
 
-			Bullet* temp2 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() + 1, getPosition()->getY() + 1, true);
-			Bullet* temp3 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() + 1, getPosition()->getY() - 1, true);
+			Bullet* temp2 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() - 1, getPosition()->getY() + 1, true);
+			Bullet* temp3 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() - 1, getPosition()->getY() - 1, true);
 
 
 			getGame()->add(temp2);

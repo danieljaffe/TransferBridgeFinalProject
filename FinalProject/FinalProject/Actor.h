@@ -20,11 +20,11 @@ public:
 	int getPower();
 	int getFireRate();
 	int getNumBullets();
-	double getCurrTime();
-	double getLastTimeFired();
+	std::time_t getCurrTime();
+	std::time_t getLastTimeFired();
 	std::vector<Effect*>* getEffects();
-	void setLastTimeFired(double);
-	void setCurrTime(double);
+	void setLastTimeFired(std::time_t);
+	void setCurrTime();
 	void setNumBullets(int);
 	void setArmor(int);
 	void setHealth(int);
@@ -39,8 +39,8 @@ private:
 	int m_power;
 	int m_fireRate;
 	int m_numBullets;
-	std::clock_t m_currTime;
-	double m_lastTimeFired;
+	std::time_t m_currTime;
+	std::time_t m_lastTimeFired;
 	std::vector<Effect*>* m_effects;
 };
 
