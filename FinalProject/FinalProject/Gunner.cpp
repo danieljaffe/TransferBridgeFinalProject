@@ -1,4 +1,6 @@
 #include "Gunner.h"
+#include "Game.h"
+#include "Actor.h"
 #include <ctime>
 
 Gunner::Gunner(Game* game, int hp, int arm, int pwr, int rate, int sightDistance, char character, int x, int y) :
@@ -34,5 +36,9 @@ void Gunner::attack(Actor*)
 void Gunner::move()
 {
 
+
+}
+
+void Gunner::update() {
 
 }
