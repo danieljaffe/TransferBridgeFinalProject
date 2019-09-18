@@ -8,7 +8,7 @@ class Game;
 
 class Gunner : public Enemy {
 public:
-	Gunner(Game*, int hp = 1, int arm = 0, int pwr = 0, int rate = 0, int m_sightDistance = 0, char character = ' ', int x = 0, int y = 0);
+	Gunner(Game*, int hp = 2, int arm = 1, int pwr = 1, int rate = 1, int m_sightDistance = 0, char character = '{', int x = 0, int y = 0);
 	virtual ~Gunner();
 	virtual void attack(Actor*);
 	virtual void move();
