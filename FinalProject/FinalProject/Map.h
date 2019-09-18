@@ -10,6 +10,7 @@ class Map
 public:
 	Map();
 	~Map()=default;
+	bool isWall(int x, int y);
 	void draw(std::vector<GameObject *> *objects);
 	void scroll();
 	static const int n_rows = 28;

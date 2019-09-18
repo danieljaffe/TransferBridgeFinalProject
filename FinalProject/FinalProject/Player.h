@@ -16,7 +16,8 @@ public:
 	virtual void move(char character);
 	virtual void update();
 	void applyEffects();
-private:
+	
+private:		
 	// private vars here
 };
 

@@ -1,14 +1,15 @@
 #include "Gunner.h"
 #include "Game.h"
 #include "Actor.h"
+#include "GameObject.h"
+#include "Bullet.h"
+#include "Position.h"
 #include <ctime>
 
 Gunner::Gunner(Game* game, int hp, int arm, int pwr, int rate, int sightDistance, char character, int x, int y) :
 	Enemy(game, hp, arm, pwr, rate, sightDistance, character, x, y) {
 
-	//m_clock = std::clock();
-	m_currTime = std::clock_t();
-	m_lastTimeFired = m_currTime;
+	//m_clock = std::clock();	
 	// constructor here
 }
 
@@ -17,19 +18,43 @@ Gunner::~Gunner()
 	// deconstructor here
 }
 
-void Gunner::attack(Actor*)
+void Gunner::attack(Actor* player)
 {
 	/*if (space is not availible) {
 		return;
 	}*/
 
-	m_currTime = std::clock_t();
+	setCurrTime(std::clock_t());
 
-	if (m_lastTimeFired + getFireRate() < m_currTime) {
+	if (getLastTimeFired() + getFireRate() < getCurrTime()) {
 
-		// fire
+		Actor* player = this->getGame()->getPlayer();
 
-		m_lastTimeFired = m_currTime;
+
+		int playerX = player->getPosition()->getX();
+		int playerY = player->getPosition()->getY();
+
+		int enemyX = getPosition()->getX();
+		int enemyY = getPosition()->getY();
+
+		if (enemyY != playerY) { // Only start shooting if the player is on our Y-value.
+			return;
+		}
+
+		Bullet* temp1 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() + 1, getPosition()->getY(), true);
+		getGame()->add(temp1);
+
+		if (getNumBullets() == 3) {
+
+			Bullet* temp2 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() + 1, getPosition()->getY() + 1, true);
+			Bullet* temp3 = new Bullet(getGame(), 1, 0, 1, 0, '-', getPosition()->getX() + 1, getPosition()->getY() - 1, true);
+
+
+			getGame()->add(temp2);
+			getGame()->add(temp3);
+		}
+
+		setLastTimeFired(getCurrTime());
 	}
 }
 

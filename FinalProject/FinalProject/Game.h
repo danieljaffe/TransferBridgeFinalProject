@@ -25,7 +25,10 @@ public:
 
 	void add(GameObject* obj);
 
+	std::vector<GameObject*> getGameObjects();
+
 	bool remove(GameObject* obj);
+	Map* getMap();
     
     // [Add other members as necessary.]
     
