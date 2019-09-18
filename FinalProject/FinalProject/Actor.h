@@ -22,13 +22,15 @@ public:
 	void setHealth(int);
 	void setPower(int);
 	void setFireRate(int);
+	bool removeEffect(Effect*);
+	void addEffect(Effect*);
 
 private:
 	int m_health;
 	int m_armor;
 	int m_power;
 	int m_fireRate;
-	std::vector<Effect*> m_effects;
+	std::vector<Effect*>* m_effects;
 };
 
 #endif

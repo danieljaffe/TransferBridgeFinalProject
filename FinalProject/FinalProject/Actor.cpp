@@ -26,3 +26,22 @@ void Actor::setHealth(int hp) { m_health = hp; }
 void Actor::setArmor(int arm) { m_armor = arm; }
 void Actor::setPower(int pwr) { m_power = pwr; }
 void Actor::setFireRate(int fireRate) { m_fireRate = fireRate; }
+
+bool Actor::removeEffect(Effect* effect)
+{
+	for (int i = 0; i < m_effects->size(); i++)
+	{
+		if (m_effects->at(i) == effect)
+		{
+			m_effects->erase(m_effects->begin() + i);
+			delete effect;
+			return true;
+		}
+	}
+	return false;
+}
+
+void Actor::addEffect(Effect* effect)
+{
+	m_effects->push_back(effect);
+}
