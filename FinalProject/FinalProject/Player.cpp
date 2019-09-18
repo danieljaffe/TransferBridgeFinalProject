@@ -12,7 +12,7 @@
 
 // Constructors and Destructors
 Player::Player(Game* game, int hp, int arm, int pwr, int rate, char character, int x, int y) : 
-	Actor(game, hp, arm, pwr, rate, character, x, y) {
+	Actor(game, 5, arm, pwr, rate, character, x, y) {
 
 	setNumBullets(1);
 }
@@ -96,7 +96,8 @@ void Player::update()
 {
 
 	if (getHealth() <= 0) {
-		this->getGame()->remove(this);
+		//this->getGame()->remove(this);
+		getGame()->setGameOver(true);
 		return;
 	}
 

@@ -175,8 +175,15 @@ void Game::setGameOver(bool gameOver)
 {
 	m_gameOver = gameOver;
 
-	if(gameOver)
-		std::cout << "--------------------------------GAME OVERRRR--------------------------" << std::endl;
+	if (gameOver) {
+		std::cout << std::endl << "-------------------------------- GAME OVERRRR  :( --------------------------" << std::endl;
+		/*std::cout << std::endl << " _____ ____  _      _____   ____  _     _____ ____  ";
+		std::cout << std::endl << "/  __//  _ \/ \__/|/  __/  /  _ \/ \ |\/  __//  __\ ";
+		std::cout << std::endl << "| |  _| / \|| |\/|||  \    | / \|| | //|  \  |  \/| ";
+		std::cout << std::endl << "| |_//| |-||| |  |||  /_   | \_/|| \// |  /_ |    / ";
+		std::cout << std::endl << "\____\\_/ \|\_/  \|\____\  \____/\__/  \____\\_/\_\ " << endl;*/
+	}
+                                                   
 }
 
 int Game::randInt(int min, int max) {

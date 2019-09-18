@@ -62,9 +62,10 @@ void Kamikazi::update() {
 	move();
 	
 
-	if ((playerX + 1 == enemyX) && (playerY == enemyY)) {
+	if ((playerX + 1 == enemyX || playerX == enemyX) && (playerY == enemyY)) {
 		attack(player);
 	}	
+
 
 	
 }
