@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int hp, int arm, int pwr, int rate, int sightDistance, char character, int x, int y) : 
-	Actor(hp, arm, pwr, rate, character, x, y) {
+Enemy::Enemy(Game* game, int hp, int arm, int pwr, int rate, int sightDistance, char character, int x, int y) : 
+	Actor(game, hp, arm, pwr, rate, character, x, y) {
 
 	m_sightDistance = sightDistance;
 }
