@@ -7,6 +7,7 @@ const char ARROW_UP    = '8';
 const char ARROW_DOWN  = '2';
 const char ARROW_LEFT  = '4';
 const char ARROW_RIGHT = '6';
+const char SPACE_BAR   = '9';
 
 ///////////////////////////////////////////////////////////
 // Screen -- Visual Output

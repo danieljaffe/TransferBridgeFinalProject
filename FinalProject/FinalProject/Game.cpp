@@ -23,6 +23,7 @@ const int PROMPT_X = 0;
 Game::Game(int width, int height)
 : m_screen(SCREEN_WIDTH, SCREEN_HEIGHT), m_level(1)
 {
+	m_score = 0;
 	m_gameObjects = new std::vector<GameObject*>();
 	m_player = new Player(this);
 	add(m_player);
@@ -59,6 +60,7 @@ void Game::play()
     //displayPrompt("Game Over!  Press the Enter key to exit!");
 	//std::cout << "heckin " << std::endl;
 	map.draw(m_gameObjects);
+	cout << "Score: " << m_score;
 	waitForEnter();
 	while (!0) 
 	{
@@ -70,6 +72,7 @@ void Game::play()
 			system("CLS");
 			map.scroll();
 			map.draw(m_gameObjects);
+			cout << "Score: " << m_score;
 			start = clock();
 
 
@@ -87,7 +90,6 @@ void Game::play()
 
 			if (input == 13) return;
 		}
-			
 	}
 	
     waitForEnter();
@@ -131,6 +133,16 @@ bool Game::remove(GameObject* obj)
 Map* Game::getMap()
 {
 	return &map;
+}
+
+int Game::getScore()
+{
+	return m_score;
+}
+
+void Game::setScore(int points)
+{
+	m_score += points;
 }
 
 int Game::randInt(int min, int max) {

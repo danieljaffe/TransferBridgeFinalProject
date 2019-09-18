@@ -66,6 +66,7 @@ void Bullet::update() {
 				// Be sure to check for the correct character types or this will blow up!  :)
 				Actor* enemy = (Actor*)checkObject;
 				attack(enemy);
+				this->getGame()->setScore(1);
 				return;
 			}
 		}

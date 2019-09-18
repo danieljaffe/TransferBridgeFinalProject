@@ -37,6 +37,12 @@ void Kamikazi::attack(Actor* actor)
 }
 
 void Kamikazi::update() {
+	if (getHealth() <= 0) {
+		this->getGame()->setScore(2);
+		this->getGame()->remove(this);
+		return;
+	}
+
 	// Check for wall collisions
 	int x = getPosition()->getX();
 	int y = getPosition()->getY();

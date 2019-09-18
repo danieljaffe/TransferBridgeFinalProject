@@ -22,6 +22,7 @@ public:
 	int getNumBullets();
 	double getCurrTime();
 	double getLastTimeFired();
+	std::vector<Effect*>* getEffects();
 	void setLastTimeFired(double);
 	void setCurrTime(double);
 	void setNumBullets(int);

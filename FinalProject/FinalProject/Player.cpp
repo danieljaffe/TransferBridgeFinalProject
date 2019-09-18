@@ -4,6 +4,9 @@
 #include "Game.h"
 #include "Bullet.h"
 #include "UserInterface.h"
+#include "Item.h"
+#include "Effect.h"
+#include <vector>
 #include <ctime>
 
 // Constructors and Destructors
@@ -18,7 +21,7 @@ void Player::attack(Actor* enemy)
 {
 	setCurrTime(std::clock_t());
 
-	if (getLastTimeFired() + getFireRate() < getLastTimeFired()) {
+	if (getLastTimeFired() + getFireRate() < getCurrTime()) {
 		//Actor* enemy = this->getGame()->getPlayer();
 		
 
@@ -43,7 +46,6 @@ void Player::attack(Actor* enemy)
 void Player::move()
 {
 	char input;
-	
 	getCharIfAny(input);
 
 	int x = getPosition()->getX();
@@ -58,6 +60,9 @@ void Player::move()
 		break;
 	case ARROW_RIGHT: x++;
 		break;
+	case SPACE_BAR: 
+		attack(nullptr);
+		break;
 	default:
 		break;
 	}
@@ -71,10 +76,39 @@ void Player::move()
 
 void Player::update()
 {
+	if (getHealth() <= 0) {
+		this->getGame()->remove(this);
+		return;
+	}
+
 	move();
+
+	std::vector<GameObject*> gameObjects = getGame()->getGameObjects();
+
+	for (int i = 0; i < gameObjects.size(); i++) {
+		if ((gameObjects.at(i)->getPosition() == getPosition()) && ((gameObjects.at(i)->getDisplayChar() == '$') 
+			|| (gameObjects.at(i)->getDisplayChar() == '+'))) {
+
+
+			// you found an item. add it to the player's collection or something
+
+			Item* item = (Item*)gameObjects.at(i);
+			addEffect(item->getEffect());
+			getGame()->remove(item);
+		}
+	}
+
+	applyEffects();
+	
 }
 
 void Player::applyEffects()
 {
+	std::vector<Effect*>* effectsOnPlayer = getEffects();
+
+	if (effectsOnPlayer->size() != 0) {
+		effectsOnPlayer->at(0)->applyEffect(this);
+		this->removeEffect(effectsOnPlayer->at(0));
+	}
 }
 
