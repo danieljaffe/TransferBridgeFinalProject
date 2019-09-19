@@ -2,19 +2,36 @@
 #define GAMEOBJECT_H
 
 class Position;
+class Game;
 
 class GameObject {
 public:
-	GameObject();
+	// Constructors and Destructors
+	GameObject(Game*, char character = ' ', int x=0, int y=0);
 	virtual ~GameObject();
-	Position* getPosition();
-	void setPosition(Position*);
+	
+	// Getters
 	char getDisplayChar();
+	Position* getPosition();
+	Game* getGame();
+	
+	// Setters
+	void setPosition(Position*);
+	void setPosition(int x, int y);
 	void setDisplayChar(char);
+	void setGame(Game*);
 
+	void setDestroyFlag(bool destroy);
+	bool getDestroyFlag();
+
+	virtual void update();
 private:
-	char displayChar;
-	Position* pos;
+	// Member variables
+	char m_displayChar;
+	Position* m_pos;
+	Game* m_game;
+
+	bool m_destroy;
 };
 
 #endif

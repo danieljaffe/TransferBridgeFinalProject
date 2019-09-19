@@ -1,10 +1,10 @@
 #include "Position.h"
 
-// Constructors
+//Constructors
 Position::Position(int x, int y) { setX(x); setY(y); }
 Position::~Position() {}
 
-// Getters
+//Getters
 int Position::getX() { return xPos; }
 int Position::getY() { return yPos; }
 

@@ -2,9 +2,16 @@
 #define GAME_INCLUDED
 
 #include "Gameboard.h"
+#include "GameObject.h"
 #include "UserInterface.h"
+//#include <random>
+#include "Map.h" 
 #include <string>
+#include <vector>
 // [Add other #include directives as necessary.]
+
+class Map;
+class Actor;
 
 class Game
 {
@@ -14,19 +21,38 @@ public:
     bool playOneLevel();
     void displayPrompt(std::string s);
     void displayStatus();
-    void t1();
-    void t2();
-    void t3();
-    void t4();
-    void t5();
+	Actor* getPlayer();
+	void setPlayer(Actor*);
+	int randInt(int min, int max);
+	bool trueWithProbability(double p);
+	void add(GameObject* obj);
+
+	std::vector<GameObject*> getGameObjects();
+
+	bool remove(GameObject* obj);
+	Map* getMap();
+	int getScore();
+	void setScore(int points);
+
+	bool isGameOver();
+	void setGameOver(bool gameOver);
     
     // [Add other members as necessary.]
     
 private:
-    Gameboard    m_board;
-    Screen  m_screen;
-    int     m_level;
-    
+    Gameboard   m_board;
+    Screen		m_screen;
+    int			m_level;
+	Actor* m_player;
+	int m_score;
+	
+	static const int TARGET_FPS = 30;
+
+	std::vector<GameObject*>* m_gameObjects;
+
+	bool m_gameOver = false;
+	
+	Map map; 
     // [Add other members as necessary.]
 };
 
