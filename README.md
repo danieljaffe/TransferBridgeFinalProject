@@ -1,7 +1,7 @@
 # Transfer Bridge Final Project
 ## Version 1.0.0
 
-The game is technically not ready for a 1.0.0 version tag, yet this is the state in which the project was submitted. We were placed into teams of 4 and given roughly 2.5 days to create a game demonstrating the skills learned and honed by team CS during Transfer Bridge 2019. 
+The game is technically not ready for a 1.0.0 version tag, yet this is the state in which the project was submitted. We were placed into teams of 4 and given roughly 2.5 days to create a game demonstrating the skills learned and honed by team CS during Transfer Bridge 2019. The project was competition based with five teams in total. Our team took first place!
 
 We used the first day for conceptualization, planning, UML diagramming, and finally the setup of our git repo. The rest of the time was utilized for coding and the execution of our outline.
 
